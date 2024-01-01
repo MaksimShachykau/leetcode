@@ -121,10 +121,6 @@ const fArr = [-2, -1, 0, 2, 10, 20, 30]
  * @return {number}
  */
 var reduce = function(nums, fn, init) {
-    let temp = init;
-    // nums.forEach(e => {
-    //     temp += fn(init, e)
-    // })
 	let acc = init;
 	nums.forEach(e => {
 		acc = fn(acc, e)
