@@ -65,12 +65,76 @@ const counter = createCounter(5);
 
 // console.log(counter.decrement())
 // console.log(counter.reset())
-// console.log(counter.decrement())
-console.log(counter.decrement()) // 4
-console.log(counter.decrement()) // 3
-console.log(counter.increment()) // 4
-console.log(counter.reset())	// 5
-console.log(counter.increment()) // 6
-console.log(counter.increment()) // 7
-console.log(counter.decrement()) // 6
-console.log(counter.reset())	// 5
+
+
+// returnedArray[i] = fn(arr[i], i).
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var map = function(arr, fn) {
+	arr.forEach((e, i) => {
+		arr[i] = fn(e, i)
+	})
+
+	return arr
+};
+
+const arr = [11, 2, 45]
+const fn = function plusone(n) { return n + 1; }
+const fn2 = function plusI(n, i) { return n + i; }
+const fn3 = function constant() { return 42; }
+
+// console.log(map(arr, fn2))
+
+// Expected output: 10
+
+/**
+ * @param {number[]} arr
+ * @param {Function} fn
+ * @return {number[]}
+ */
+var filter = function(arr, fn) {
+    const temp = []
+
+    arr.forEach((e, i) => {
+      if(fn(e, i)) temp.push(e)
+    })
+
+    return temp
+};
+
+const ffn = function greaterThan10(n) { return n > 10; }
+const ffn2 = function firstIndex(n, i) { return i === 0; }
+const ffn3 = function plusOne(n) { return n + 1 }
+
+const fArr = [-2, -1, 0, 2, 10, 20, 30]
+
+// console.log(filter(fArr, ffn3))
+
+
+/**
+ * @param {number[]} nums
+ * @param {Function} fn
+ * @param {number} init
+ * @return {number}
+ */
+var reduce = function(nums, fn, init) {
+    let temp = init;
+    // nums.forEach(e => {
+    //     temp += fn(init, e)
+    // })
+	let acc = init;
+	nums.forEach(e => {
+		acc = fn(acc, e)
+	})
+    return acc
+};
+
+const rfn = function sum(accum, curr) { return accum + curr; }
+const rfn2 = function sum(accum, curr) { return accum + curr * curr; }
+const rfn3 = function sum(accum, curr) { return 0; }
+
+const rArr = [1, 2, 3, 4]
+console.log(reduce([], rfn3, 25))
