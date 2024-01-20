@@ -3,14 +3,14 @@
  * @param {number} size
  * @return {Array}
  */
-var chunk = function(arr, size) {
+var chunk = function (arr, size) {
 	let temp = []
 	let temp2 = []
 
 	arr.forEach((e, i) => {
 		temp2.push(e)
 
-		if((i+1)%size === 0 || i+1 === arr.length) {
+		if ((i + 1) % size === 0 || i + 1 === arr.length) {
 			temp.push(temp2)
 			temp2 = []
 		}
@@ -24,8 +24,8 @@ var chunk = function(arr, size) {
 // console.log(chunk(arr, 6))
 
 
-Array.prototype.last = function() {
-	return this[this.length-1]
+Array.prototype.last = function () {
+	return this[this.length - 1]
 };
 
 
@@ -36,11 +36,11 @@ arr2.last(); // 3
  * @param {Function} fn
  * @return {Object}
  */
-Array.prototype.groupBy = function(fn) {
+Array.prototype.groupBy = function (fn) {
 	let obj = {}
 	this.forEach((e) => {
-        let key = fn(e)
-		if(obj[key]) {
+		let key = fn(e)
+		if (obj[key]) {
 			obj[key].push(e)
 		} else {
 			obj[key] = []
